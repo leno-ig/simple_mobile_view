@@ -31,8 +31,12 @@
  
  デフォルトのviewの命名ルールは
   {:action}.{:locale}.{:formats}.{:handlers}ですが、それを
-  {:action}+.{:ua}+.{:locale}.{:formats}.{:handlers}に拡張しています。
-
+  {:action}.{:ua}.{:locale}.{:formats}.{:handlers}に拡張しています。
+ 
+ また、{:ua}を複数指定することで、
+  PCとmobileでviewを切替えたり、
+  iosとAndroidでviewを切替えたり、
+  グループ化できます。
 
 == カスタマイズ
 
