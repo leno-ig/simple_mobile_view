@@ -8,22 +8,22 @@
 
 == 例
  以下の様なviewがあった場合の、各UAによる動作イメージ
-- index.iphone.ja.html.erb
-- index.ios.ja.html.erb
-- index.mobile.ja.html.erb
-- index.ja.html.erb
+* index.iphone.ja.html.erb
+* index.ios.ja.html.erb
+* index.mobile.ja.html.erb
+* index.ja.html.erb
 
 === iPhoneの場合
-- index.iphone.ja.html.erb
+* index.iphone.ja.html.erb
 
 === iPadの場合
-- index.ios.ja.html.erb
+* index.ios.ja.html.erb
 
 === Androidの場合
-- index.mobile.ja.html.erb
+* index.mobile.ja.html.erb
 
 === PC(その他)の場合
-- index.ja.html.erb
+* index.ja.html.erb
 
 == 解説
  Rails3のデフォルトで組み込まれているviewの切替機能を少しだけ拡張しています。
@@ -40,7 +40,7 @@
  など自由にセグメントを作ることが化が可能です。
 
 == ユーザエージェントのカスタマイズ
-- iPhoneだけ異なるviewにしたい
+* iPhoneだけ異なるviewにしたい
 ** 他を消して、iphoneだけにする
   
   module SimpleMobileView
@@ -55,7 +55,7 @@
     end
   end
 
-- Androidの新機種を追加したい
+* Androidの新機種を追加したい
 ** ユーザエージェントを調べて、/Android 1/より上に追加する
   
   module SimpleMobileView
@@ -78,7 +78,7 @@
     end
   end
 
-- その他の機種を追加したい
+* その他の機種を追加したい
 ** ユーザエージェントを調べて、追加する
 ** lookup_context.uaは{:locale}や{:formats}と競合しないように３文字以上を推奨
   
