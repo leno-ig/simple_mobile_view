@@ -11,6 +11,7 @@
 - index.iphone.ja.html.erb
 - index.ios.ja.html.erb
 - index.mobile.ja.html.erb
+- index.ja.html.erb
 
 === iPhoneの場合
 - index.iphone.ja.html.erb
@@ -20,6 +21,18 @@
 
 === Androidの場合
 - index.mobile.ja.html.erb
+
+=== PC(その他)の場合
+- index.ja.html.erb
+
+== 解説
+ Rails3のデフォルトで組み込まれているviewの切替機能を少しだけ拡張しています。
+  詳しくはこのあたり >> ActionView::PathResolver#query
+ 
+ デフォルトのviewの命名ルールは
+  {:action}.{:locale}.{:formats}.{:handlers}ですが、それを
+  {:action}+.{:ua}+.{:locale}.{:formats}.{:handlers}に拡張しています。
+
 
 == カスタマイズ
 
