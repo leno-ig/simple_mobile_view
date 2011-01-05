@@ -30,13 +30,74 @@
   詳しくはこのあたり >> ActionView::PathResolver#query
  
  デフォルトのviewの命名ルールは
-  {:action}.{:locale}.{:formats}.{:handlers}ですが、それを
+  {:action}.{:locale}.{:formats}.{:handlers}ですが、
+ それを
   {:action}.{:ua}.{:locale}.{:formats}.{:handlers}に拡張しています。
  
  また、{:ua}を複数指定することで、
-  PCとmobileでviewを切替えたり、
-  iosとAndroidでviewを切替えたり、
-  グループ化できます。
+  PCとmobile、
+  iOSとAndroid、
+ など自由にセグメントを作ることが化が可能です。
 
-== カスタマイズ
+== ユーザエージェントのカスタマイズ
+- iPhoneだけ異なるviewにしたい
+-- 他を消して、iphoneだけにする
+  module SimpleMobileView
+    module Filter
+    private
+      def set_ua
+        case request.env["HTTP_USER_AGENT"].to_s
+        when /iPhone/
+          lookup_context.ua = %w(iphone)
+        end
+      end
+    end
+  end
 
+- Androidの新機種を追加したい
+-- ユーザエージェントを調べて、/Android 1/より上に追加する
+  module SimpleMobileView
+    module Filter
+    private
+      def set_ua
+        case request.env["HTTP_USER_AGENT"].to_s
+        when /iPhone/
+          lookup_context.ua = %w(iphone   ios     mobile)
+        when /iPad/
+          lookup_context.ua = %w(ipad     ios     mobile)
+        when /Nexus S/
+          lookup_context.ua = %w(nexus_s  android mobile)
+        when /Android 1/
+          lookup_context.ua = %w(android1 android mobile)
+        when /Android 2/
+          lookup_context.ua = %w(android2 android mobile)
+        end
+      end
+    end
+  end
+
+- その他の機種を追加したい
+-- ユーザエージェントを調べて、追加する
+-- lookup_context.uaは{:locale}や{:formats}と競合しないように３文字以上を推奨
+  module SimpleMobileView
+    module Filter
+    private
+      def set_ua
+        case request.env["HTTP_USER_AGENT"].to_s
+        when /iPhone/
+          lookup_context.ua = %w(iphone   ios     mobile)
+        when /iPad/
+          lookup_context.ua = %w(ipad     ios     mobile)
+        when /Android 1/
+          lookup_context.ua = %w(android1 android mobile)
+        when /Android 2/
+          lookup_context.ua = %w(android2 android mobile)
+        when /Windows Mobile 7/
+          lookup_context.ua = %w(windowsmobile7   mobile)
+        when /BlackBerry/
+          lookup_context.ua = %w(blackberry       mobile)
+        end
+      end
+    end
+  end
+  
