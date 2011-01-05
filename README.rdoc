@@ -1,0 +1,25 @@
+= SimpleMobileViewとは
+ SimpleMobileViewはユーザエージェントによるviewの切替えを可能にします。
+ mobileに限らず、他の用途にも応用が効きます。
+
+== インストール
+ cd vendor/plugins/
+ git clone git://github.com/leno-ig/simple_mobile_view.git
+
+== 例
+ 以下の様なviewがあった場合の、各UAによる動作イメージ
+- index.iphone.ja.html.erb
+- index.ios.ja.html.erb
+- index.mobile.ja.html.erb
+
+=== iPhoneの場合
+- index.iphone.ja.html.erb
+
+=== iPadの場合
+- index.ios.ja.html.erb
+
+=== Androidの場合
+- index.mobile.ja.html.erb
+
+== カスタマイズ
+
