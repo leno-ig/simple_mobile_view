@@ -41,7 +41,7 @@
 
 == ユーザエージェントのカスタマイズ
 * iPhoneだけ異なるviewにしたい
-** 他を消して、iphoneだけにする
+他を消して、iphoneだけにする
   
   module SimpleMobileView
     module Filter
@@ -56,7 +56,7 @@
   end
 
 * Androidの新機種を追加したい
-** ユーザエージェントを調べて、/Android 1/より上に追加する
+ユーザエージェントを調べて、/Android 1/より上に追加する
   
   module SimpleMobileView
     module Filter
@@ -79,8 +79,8 @@
   end
 
 * その他の機種を追加したい
-** ユーザエージェントを調べて、追加する
-** lookup_context.uaは{:locale}や{:formats}と競合しないように３文字以上を推奨
+ユーザエージェントを調べて、追加する　
+lookup_context.uaは{:locale}や{:formats}と競合しないように３文字以上を推奨
   
   module SimpleMobileView
     module Filter
